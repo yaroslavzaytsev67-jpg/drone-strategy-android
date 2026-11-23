@@ -8,8 +8,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-          steps:
+    steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
