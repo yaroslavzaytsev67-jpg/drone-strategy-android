@@ -2,6 +2,7 @@
 'use strict';
 const W=720,H=1280;
 class AirDefense extends Phaser.Scene{
+ preload(){this.load.image('photo_houses','https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Drone_view_of_houses_%28Unsplash%29.jpg/960px-Drone_view_of_houses_%28Unsplash%29.jpg');this.load.image('photo_uav','https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/ScanEagle_UAV_catapult_launcher_%28center%29.jpg/960px-ScanEagle_UAV_catapult_launcher_%28center%29.jpg');this.load.image('photo_sam','https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Tien_Kung_%E2%85%A1_Missile_Launcher_with_Truck_Display_at_Gangshan_Air_Force_Base_Apron_20170812a.jpg/960px-Tien_Kung_%E2%85%A1_Missile_Launcher_with_Truck_Display_at_Gangshan_Air_Force_Base_Apron_20170812a.jpg');}
  constructor(){super('air-defense');this.cash=520;this.wave=0;this.cityHp=12;this.kills=0;this.towers=[];this.enemies=[];this.friendlyDrones=[];this.missiles=[];this.effects=[];this.pick=null;this.structures=[];this.audioOn=true;this.active=false;this.paused=false;this.speed=1;this.spawnLeft=0;this.spawnClock=0;this.message='РАЗМЕСТИ ПВО НА КАРТЕ И ЗАПУСТИ ВОЛНУ';this.flySoundClock=0;}
  create(){this.paintTerrain();this.units=this.add.graphics();this.fx=this.add.graphics();this.hud=this.add.container();this.makeHud();this.camera=this.cameras.main;this.camera.setBounds(0,0,W,H);this.camera.setZoom(1);this.camera.ignore(this.hud);this.gesturePointers={};this.dragPointerId=null;this.pinchDistance=0;this.input.addPointer(2);this.input.on('pointerdown',p=>this.pointerDown(p));this.input.on('pointermove',p=>this.pointerMove(p));this.input.on('pointerup',p=>this.pointerUp(p));this.input.on('wheel',(p,go,dx,dy)=>this.setCameraZoom(this.camera.zoom*(dy<0?1.12:.89),p.x,p.y));this.events.on('update',this.updateGame,this);this.redraw();}
  paintTerrain(){
@@ -42,6 +43,11 @@ class AirDefense extends Phaser.Scene{
  g.fillStyle(0x555c54,1).fillRoundedRect(55,205,180,42,5);g.lineStyle(2,0xd3d2bc,1).strokeRoundedRect(55,205,180,42,5);g.lineStyle(2,0xe4e3d0,.8).beginPath().moveTo(68,226).lineTo(220,226).strokePath();
  this.structures=[{x:590,y:118,w:92,h:65,type:'power',name:'ЭЛЕКТРОСТАНЦИЯ',hp:8,max:8},{x:115,y:300,w:96,h:60,type:'gas',name:'ГАЗОВАЯ СТАНЦИЯ',hp:6,max:6},...[[395,190],[500,210],[440,275],[565,290],[635,220],[340,260],[290,190],[260,290],[370,340],[475,360],[585,390],[650,310],[325,400],[505,155],[580,255],[405,420]].map(([x,y])=>({x,y,w:48,h:42,type:'home',name:'ДОМ',hp:3,max:3}))];
  this.drawStructures(g);
+ // Real licensed photo panels from Wikimedia Commons (CC0/public domain).
+ const photo=(key,x,y,w,h)=>{if(this.textures.exists(key)){this.add.rectangle(x,y,w+8,h+8,0x18221f,.92).setStrokeStyle(2,0xc2cbb8);this.add.image(x,y,key).setDisplaySize(w,h);}};
+ photo('photo_houses',475,300,300,200);
+ photo('photo_uav',145,226,150,98);
+ photo('photo_sam',565,600,180,135);
  // labels
  this.add.text(28,177,'СЕКТОР 04 / КАРТА ОБОРОНЫ',{fontSize:16,color:'#f4f1d9',fontStyle:'bold',stroke:'#26392d',strokeThickness:3});
  this.add.text(498,58,'ОБЪЕКТ «СЕВЕР»',{fontSize:13,color:'#f7e6b7',fontStyle:'bold',stroke:'#26392d',strokeThickness:3});
