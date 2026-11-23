@@ -1,0 +1,5 @@
+:root{color-scheme:dark;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:#081321;color:#edf5ff}
+*{box-sizing:border-box}
+html,body,#game{margin:0;width:100%;height:100%;overflow:hidden;background:#081321;touch-action:none}
+canvas{display:block;touch-action:none}
+body{overscroll-behavior:none;user-select:none;-webkit-user-select:none}
