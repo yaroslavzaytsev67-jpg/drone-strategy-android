@@ -9,9 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      ANDROID_HOME: /usr/local/lib/android/sdk
-      ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
-    steps:
+          steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -20,10 +18,9 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
-      - name: Install Android SDK packages
-        run: |
-          yes | sdkmanager --licenses
-          sdkmanager 'platform-tools' 'platforms;android-35' 'build-tools;35.0.0'
+      - uses: android-actions/setup-android@v4
+        with:
+          packages: 'platform-tools platforms;android-35 build-tools;35.0.0'
       - name: Extract project
         run: unzip -o source-project.zip -d .
       - name: Install and build web assets
