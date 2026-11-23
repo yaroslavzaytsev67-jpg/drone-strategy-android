@@ -1,0 +1,13 @@
+{
+  "name": "skyfront-mobile",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mobile-first turn-based drone strategy game",
+  "scripts": { "build": "node scripts/build.js" },
+  "dependencies": {
+    "@capacitor/android": "^7.4.3",
+    "@capacitor/core": "^7.4.3",
+    "phaser": "^3.90.0"
+  },
+  "devDependencies": { "@capacitor/cli": "^7.4.3" }
+}
