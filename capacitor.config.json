@@ -1,0 +1,7 @@
+{
+  "appId": "org.openai.skyfrontstrategy",
+  "appName": "Skyfront Strategy",
+  "webDir": "www",
+  "server": { "androidScheme": "https" },
+  "android": { "allowMixedContent": false }
+}
