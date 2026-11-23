@@ -39,10 +39,10 @@ class AirDefense extends Phaser.Scene{
  panel(360,34,700,70);this.stats=this.add.text(20,12,'',{fontSize:19,color:'#f0f6ed',fontStyle:'bold'});this.res=this.add.text(20,43,'',{fontSize:15,color:'#ffdfa0',fontStyle:'bold'});this.hud.add([this.stats,this.res]);
  panel(360,1184,700,184,0x102638);
  this.status=this.add.text(20,1088,this.message,{fontSize:15,color:'#fff2cf',fontStyle:'bold',wordWrap:{width:680}});this.hud.add(this.status);
- this.button(18,1120,160,58,'ПУЛЕМЁТНАЯ\\nЗСУ  •  90',()=>this.select('gun'),0x496447);
- this.button(190,1120,160,58,'РАКЕТНОЕ ПВО\\nЗРК  •  180',()=>this.select('sam'),0x315f7b);
- this.button(362,1120,160,58,'РАДАР\\nОБНАРУЖЕНИЕ • 120',()=>this.select('radar'),0x60537d);
- this.button(534,1120,168,58,'НАЧАТЬ\\nВОЛНУ',()=>this.startWave(),0x874b3d);
+ this.button(18,1120,160,58,'ПУЛЕМЁТНАЯ\nЗСУ  •  90',()=>this.select('gun'),0x496447);
+ this.button(190,1120,160,58,'РАКЕТНОЕ ПВО\nЗРК  •  180',()=>this.select('sam'),0x315f7b);
+ this.button(362,1120,160,58,'РАДАР\nОБНАРУЖЕНИЕ • 120',()=>this.select('radar'),0x60537d);
+ this.button(534,1120,168,58,'НАЧАТЬ\nВОЛНУ',()=>this.startWave(),0x874b3d);
  this.button(18,1192,210,50,'СКОРОСТЬ ×'+this.speed,()=>{this.speed=this.speed%3+1;this.refreshHud();},0x344d60);
  this.button(245,1192,210,50,'ПАУЗА',()=>{this.paused=!this.paused;this.refreshHud();},0x344d60);
  this.button(472,1192,230,50,'НОВАЯ ОПЕРАЦИЯ',()=>this.scene.restart(),0x59434b);
